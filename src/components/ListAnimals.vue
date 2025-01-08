@@ -3,7 +3,7 @@
     <h1>Animals</h1>
     <table>
       <thead>
-        <tr>
+        <tr >
           <th>ID</th>
           <th>Type</th>
           <th>Breed</th>
