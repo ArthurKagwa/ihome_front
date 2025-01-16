@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <h1 class="green ">Animals</h1>
     <table class="min-w-full border-collapse border border-gray-300 shadow-md rounded-md">
@@ -34,6 +35,9 @@
       </tbody>
     </table>
   </div>
+  <!--  question to ask if animal should be deleted  should change-->
+
+
   <!-- form to add animal -->
   <div class="mt-8 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md border border-gray-200">
     <h2 class="text-lg font-bold text-gray-800 mb-4">Add New Animal</h2>
@@ -64,6 +68,16 @@
         </select>
       </div>
 
+<!-- Date of Birth -->
+      <div class="mb-4">
+        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+        <input
+          type="date"
+          id="dob"
+          v-model="newAnimal.dob"
+          class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"
+        />
+      </div>
       <!-- Breed Selection -->
       <div class="mb-4">
         <label for="breed" class="block text-sm font-medium text-gray-700">Breed</label>
@@ -144,6 +158,8 @@ export default {
         id: '',
         type: '',
         breed: '',
+        dob:'',
+        farm:'',
         sex: '',
         father: '',
         mother: ''
@@ -204,6 +220,13 @@ export default {
     },
     deleteAnimal(id) {
       const baseURL = 'http://127.0.0.1:8000/api/animals/';
+
+
+
+      // ask if sure
+      if (!confirm('Are you sure you want to delete this animal?')) {
+        return;
+      }
       axios
         .delete(`${baseURL}${id}/`)
         .then(() => {
