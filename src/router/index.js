@@ -7,6 +7,7 @@ import Events from '../components/Events.vue';
 import Profile from '../components/Profile.vue';
 import Login from "@/components/Auth/Login.vue";
 import Register from "@/components/Auth/Register.vue";
+import Dashboard from "@/components/Dashboard.vue";
 
 // Define the routes
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/register', component: Register },
   { path: '/animals', component: Animal },
+  { path: '/dashboard',  component: Dashboard },
 ];
 
 // Create router instance

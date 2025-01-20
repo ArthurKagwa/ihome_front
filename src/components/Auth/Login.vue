@@ -53,18 +53,17 @@ export default {
       username: "",
       password: "",
       errorMessage: null,
+      isLoggedIn: false,
     };
   },
   methods: {
     async handleLogin() {
       try {
-       const response = await axios.post("http://127.0.0.1:8000/api/token/", {
+       const response = await axios.post("http://127.0.0.1:8000/login/", {
           username: this.username,
           password: this.password,
         });
-        const { access, refresh } = response.data;
-        localStorage.setItem("access_token", access);
-        localStorage.setItem("refresh_token", refresh);
+        localStorage.setItem("access_token", response.data.token);
         this.$router.push("/dashboard"); // Navigate to a dashboard or home page
       } catch (error) {
         this.errorMessage = "Invalid credentials. Please try again.";
